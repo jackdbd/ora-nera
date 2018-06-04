@@ -5,6 +5,7 @@ class OraNera extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      time: "00:00",
       timeON: "ON...",
       ON: this.getON()
     };
@@ -20,21 +21,21 @@ class OraNera extends Component {
       hour,
       minute,
       second,
-      date: d
+      date: d,
+      m: moment().tz(this.props.tz)
     };
   }
 
   updateTime() {
-    // const m = moment()
-    const d = new Date();
-    const diffMinutes = (d - this.state.ON.date) / 1000 / 60;
+    const m = moment().tz(this.props.tz);
+    const duration = moment.duration(m.diff(this.state.ON.m));
+    const diffMinutes = duration.asMinutes();
     const digit = Math.floor(diffMinutes / this.state.ON.minute);
-    const timeON = `ON${digit}`;
-
-    // const aaa = moment().toDate()
-    // console.log(m)
+    const timeON = digit ? `ON${digit}` : "ON";
+    const time = m.tz(this.props.tz).format("LLL");
 
     this.setState({
+      time,
       timeON,
       ON: this.getON()
     });
@@ -54,10 +55,10 @@ class OraNera extends Component {
         <div className="col s12">
           <div className="card grey darken-3">
             <div className="card-content white-text">
-              <span className="card-title">{this.state.timeON}</span>
-              <span className="">
-                {moment().format("MMMM Do YYYY, h:mm:ss a")}
-              </span>
+              <span className="card-title">{this.props.tz}</span>
+              <span>{this.state.timeON}</span>
+              <br />
+              <span>{this.state.time}</span>
             </div>
           </div>
         </div>

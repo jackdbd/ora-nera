@@ -9,8 +9,9 @@ class App extends Component {
     return (
       <div className="container">
         <Header />
-        <OraNera />
-        <OraNera />
+        <OraNera tz={"America/New_York"} />
+        <OraNera tz={"Europe/Rome"} />
+        <OraNera tz={"Asia/Tokyo"} />
         <Footer />
       </div>
     );
