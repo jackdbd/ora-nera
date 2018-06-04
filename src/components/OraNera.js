@@ -15,14 +15,13 @@ class OraNera extends Component {
     const hour = 20;
     const minute = 15;
     const second = 0;
-    const d = new Date();
-    d.setHours(hour, minute, second);
+    // const d = new Date();
+    // d.setHours(hour, minute, second);
     return {
       hour,
       minute,
       second,
-      date: d,
-      m: moment().tz(this.props.tz)
+      m: moment.tz("08:15 pm", "h:mm a", this.props.tz)
     };
   }
 
