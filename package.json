@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "materialize-css": "^0.100.2",
+    "moment": "^2.22.2",
+    "moment-timezone": "^0.5.17",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-scripts": "1.1.4"
