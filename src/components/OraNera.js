@@ -6,6 +6,7 @@ class OraNera extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      date: "",
       realTime: "ON",
       fakeTime: "00:00."
     };
@@ -13,10 +14,13 @@ class OraNera extends Component {
 
   updateTime() {
     const m = moment().tz(this.props.tz);
+    const date = m.format("LL");
     const realTime = getRealTime(m, this.props.tz);
-    const fakeTime = m.tz(this.props.tz).format("LLL");
+    // const fakeTime = m.tz(this.props.tz).format("LTS");
+    const fakeTime = m.format("LTS");
 
     this.setState({
+      date,
       realTime,
       fakeTime
     });
@@ -37,9 +41,11 @@ class OraNera extends Component {
           <div className="card grey darken-3">
             <div className="card-content white-text">
               <span className="card-title">{this.props.tz}</span>
-              <span>{this.state.realTime}</span>
+              <span>{this.state.date}</span>
               <br />
-              <span>{this.state.fakeTime}</span>
+              <span>Real Time: {this.state.realTime}</span>
+              <br />
+              <span>Fake Time: {this.state.fakeTime}</span>
             </div>
           </div>
         </div>
