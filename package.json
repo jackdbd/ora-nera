@@ -2,13 +2,15 @@
   "name": "ora-nera",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://jackdbd.github.io/ora-nera",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "test:verbose": "react-scripts test --env=jsdom --verbose",
     "eject": "react-scripts eject",
-    "lint": "prettier --write '{,!(node_modules)/}**/*.{js,jsx}'"
+    "lint": "prettier --write '{,!(node_modules)/}**/*.{js,jsx}'",
+    "deploy": "npm run build && gh-pages -d build"
   },
   "dependencies": {
     "materialize-css": "^0.100.2",
@@ -19,6 +21,7 @@
     "react-scripts": "1.1.4"
   },
   "devDependencies": {
+    "gh-pages": "^1.2.0",
     "prettier": "^1.13.4"
   }
 }
